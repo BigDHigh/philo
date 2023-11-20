@@ -3,13 +3,15 @@ NAME = philo
 SRC := 	utils.c \
 		time.c \
 		init.c \
-		philo.c
+		philo.c \
+		dead.c
 
 
 OBJ := $(SRC:.c=.o)
 
 #CCFLAGS := -Wall -Wextra -Werror
-CCFLAGS := -g -fsanitize=address
+#CCFLAGS := -g -fsanitize=address
+CCFLAGS := -g -fsanitize=thread
 
 .PHONY: all bonus clean fclean re
 

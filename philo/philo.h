@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:31:28 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/20 11:34:34 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/20 18:20:20 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_philo
 	unsigned long long	last_diner;
 	int					should_eat;
 	int					dead;
+	int					eaten;
 }	t_philo;
 
 typedef struct s_data
@@ -39,11 +40,14 @@ typedef struct s_data
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				number_oftimeseach_philosopher_must_eat;
+	int				max_eat;
+	int				run;
 }	t_data;
 
-int	init_struct(t_data *data, int argc, char **argv);
+int					init_struct(t_data *data, int argc, char **argv);
 unsigned long long	get_time(void);
-int	ft_atoi(const char *str);
+int					ft_atoi(const char *str);
+void				*death_checker(void *data);
+void	sleep_until(unsigned long long timestamp);
 
 #endif
