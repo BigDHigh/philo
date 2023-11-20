@@ -6,13 +6,13 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:12:22 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/20 11:36:13 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/20 11:42:10 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*death_checker(void *data)
+int	*death_checker(void *data)
 {
 	int		i;
 	int		dead;
@@ -32,4 +32,5 @@ void	*death_checker(void *data)
 			}
 		}
 	}
+	return (dead);
 }
