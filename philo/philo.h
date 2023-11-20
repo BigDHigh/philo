@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:31:28 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/20 09:02:06 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/20 11:34:34 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_philo
 	t_data				*data;
 	unsigned long long	last_diner;
 	int					should_eat;
+	int					dead;
 }	t_philo;
 
 typedef struct s_data
