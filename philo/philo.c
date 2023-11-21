@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:35:37 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/20 21:35:27 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/21 08:31:23 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ int	main(int argc, char **argv)
 	pthread_t	checker;
 
 	if (argc < 5 || argc > 6)
-		return (printf("wrong number of arguments\n"), 1);
+		return (printf("Error: wrong number of arguments\n"), 1);
+	printf("timestamp: %llu\n", get_time());
 	sleep_until(get_time() + 1000);
 	if (init_struct(&data, argc, argv))
-		return (9);
+		return (printf("Initialization error\n"), 9);
 	i = -1;
-	printf("timestamp: %llu\n", get_time());
 	printf("timestamp: %llu\n", get_time());
 	while (++i < data.number_of_philosophers)
 	{
