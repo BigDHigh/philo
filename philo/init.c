@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:20:16 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/21 16:03:27 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/21 17:22:23 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	init_struct(t_data *data, int argc, char **argv)
 	data->fork = malloc(sizeof(pthread_mutex_t) * data->number_of_philosophers);
 	data->philo = malloc(sizeof(t_philo) * data->number_of_philosophers);
 	data->fork_val = malloc(sizeof(int) * data->number_of_philosophers);
+	data->diner_mutex = malloc(sizeof(pthread_mutex_t) * data->number_of_philosophers);
+	data->eaten_mutex = malloc(sizeof(pthread_mutex_t) * data->number_of_philosophers);
 	if (!data->fork || !data->philo || !data->fork_val)
 		return (clean_data(data), perror("malloc error"), 1);
 	if (init_philos(data))
@@ -63,9 +65,14 @@ int	init_threads(t_data *data, pthread_t *checker)
 	{
 		if (pthread_mutex_init(&data->fork[i], NULL) != 0)
 			return (perror("create mutex error"), 1);
+		if (pthread_mutex_init(&data->eaten_mutex[i], NULL) != 0)
+			return (perror("create mutex error"), 1);
+		if (pthread_mutex_init(&data->diner_mutex[i], NULL) != 0)
+			return (perror("create mutex error"), 1);
 		if (pthread_create(&data->philo[i].thread, NULL,
 				&routine, &data->philo[i]) != 0)
 			return (perror("create thread error"), 1);
+		// usleep(1000);
 	}
 	if (pthread_create(checker, NULL, &death_checker, data) != 0)
 		return (perror("create thread error"), 1);

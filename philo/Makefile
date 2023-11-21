@@ -6,6 +6,7 @@ SRC := 	utils.c \
 		philo.c \
 		clean.c \
 		setter.c \
+		getter.c \
 		dead.c
 
 

@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:31:28 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/21 15:54:44 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/21 17:28:43 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_data
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		run_mutex;
 	pthread_mutex_t		print_mutex;
+	pthread_mutex_t		*eaten_mutex;
+	pthread_mutex_t		*diner_mutex;
 	int					*fork_val;
 	t_philo				*philo;
 	int					number_of_philosophers;
@@ -60,5 +62,7 @@ void					set_run(t_data *data);
 int						get_run(t_data *data);
 void					protected_print(char *str, t_philo *philo);
 void					set_fork(t_philo *philo);
+unsigned long long		get_last_diner(t_philo *philo);
+int						get_eat(t_philo *philo);
 
 #endif
