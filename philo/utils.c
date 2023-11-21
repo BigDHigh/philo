@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:26:33 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/20 08:32:13 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:01:39 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,12 @@ int	ft_atoi(const char *str)
 		return (number * -1);
 	else
 		return (0);
+}
+
+void	protected_print(char *str, t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->print_mutex);
+	if (get_run(philo->data))
+		printf("%llu %d %s\n", get_time(philo->data), philo->index + 1, str);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }

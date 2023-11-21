@@ -4,6 +4,8 @@ SRC := 	utils.c \
 		time.c \
 		init.c \
 		philo.c \
+		clean.c \
+		setter.c \
 		dead.c
 
 
@@ -25,7 +27,7 @@ all:$(NAME)
 
 $(NAME): $(OBJ)
 	cc $(CCFLAGS) $(OBJ) -o $(NAME)
-$(OBJ):
+$(OBJ): $(SRC)
 	cc -c $(CCFLAGS) $(SRC)
 clean:
 	rm -f $(OBJ)

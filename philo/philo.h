@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:31:28 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/20 18:20:20 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/21 15:54:44 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,32 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	pthread_mutex_t	*fork;
-	int				*fork_val;
-	t_philo			*philo;
-	int				number_of_philosophers;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				max_eat;
-	int				run;
+	pthread_mutex_t		*fork;
+	pthread_mutex_t		run_mutex;
+	pthread_mutex_t		print_mutex;
+	int					*fork_val;
+	t_philo				*philo;
+	int					number_of_philosophers;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					max_eat;
+	int					run;
+	unsigned long long	start;
 }	t_data;
 
-int					init_struct(t_data *data, int argc, char **argv);
-unsigned long long	get_time(void);
-int					ft_atoi(const char *str);
-void				*death_checker(void *data);
-void	sleep_until(unsigned long long timestamp);
+int						init_struct(t_data *data, int argc, char **argv);
+unsigned long long		get_time(t_data *data);
+int						ft_atoi(const char *str);
+void					*death_checker(void *data);
+void					sleep_until(unsigned long long timestamp, t_data *data);
+void					*routine(void *philo);
+int						init_threads(t_data *data, pthread_t *checker);
+int						clean(t_data *data, pthread_t *checker);
+void					clean_data(t_data *data);
+void					set_run(t_data *data);
+int						get_run(t_data *data);
+void					protected_print(char *str, t_philo *philo);
+void					set_fork(t_philo *philo);
 
 #endif

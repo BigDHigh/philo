@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:12:22 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/20 19:31:14 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:37:31 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ void	*death_checker(void *data)
 		i = -1;
 		while (++i < data_ptr->number_of_philosophers)
 		{
-			// if ((get_time() - data_ptr->philo[i].last_diner >= data_ptr->time_to_die) || get_eaten_meals(data_ptr))
-			if (get_time() - data_ptr->philo[i].last_diner >= data_ptr->time_to_die)
+			// if ((get_time(data) - data_ptr->philo[i].last_diner >= data_ptr->time_to_die) || get_eaten_meals(data_ptr))
+			if (get_time(data) - data_ptr->philo[i].last_diner >= data_ptr->time_to_die)
 			{
-				printf("%llu %i died because: %llu - %llu >= %llu\n", get_time(), i, get_time(), data_ptr->philo[i].last_diner, data_ptr->time_to_die);
+				protected_print("died", &data_ptr->philo[i]);
+				// printf("%llu %i died because: %llu - %llu >= %d\n", get_time(data), i, get_time(data), data_ptr->philo[i].last_diner, data_ptr->time_to_die);
 				dead = 1;
 				break ;
 			}
@@ -67,6 +68,23 @@ void	*death_checker(void *data)
 		}
 		usleep(10000);
 	}
-	data_ptr->run = 0;
+	set_run(data_ptr);
 	return (NULL);
+}
+
+void	set_run(t_data *data)
+{
+	pthread_mutex_lock(&data->run_mutex);
+	data->run = 0;
+	pthread_mutex_unlock(&data->run_mutex);
+}
+
+int	get_run(t_data *data)
+{
+	int	run;
+
+	pthread_mutex_lock(&data->run_mutex);
+	run = data->run;
+	pthread_mutex_unlock(&data->run_mutex);
+	return (run);
 }
