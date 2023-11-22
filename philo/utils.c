@@ -6,11 +6,19 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:26:33 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/21 16:01:39 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 10:23:05 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
 
 static int	ft_recursive_str_to_int(const char *str, int *number)
 {
@@ -49,12 +57,4 @@ int	ft_atoi(const char *str)
 		return (number * -1);
 	else
 		return (0);
-}
-
-void	protected_print(char *str, t_philo *philo)
-{
-	pthread_mutex_lock(&philo->data->print_mutex);
-	if (get_run(philo->data))
-		printf("%llu %d %s\n", get_time(philo->data), philo->index + 1, str);
-	pthread_mutex_unlock(&philo->data->print_mutex);
 }

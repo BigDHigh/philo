@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:20:16 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 09:35:39 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:37:08 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@ static int	init_philos(t_data *data)
 		if (i == 0)
 			right_fork = data->number_of_philosophers - 1;
 		else
-			right_fork = i;
-		if (i == data->number_of_philosophers - 1)
-			right_fork = 0;
-		else
-			left_fork = i + 1;
+			right_fork = i - 1;
+		left_fork = i;
 		data->philo[i].left_fork = &data->fork[left_fork];
 		data->philo[i].right_fork = &data->fork[right_fork];
 		data->fork_val[i] = 1;
@@ -65,7 +62,7 @@ int	init_struct(t_data *data, int argc, char **argv)
 		return (clean_data(data), perror("malloc error"), 1);
 	if (init_philos(data))
 		return (clean_data(data), 1);
-	data->start = get_time(data);
+	data->start = get_time();
 	return (0);
 }
 
@@ -75,6 +72,10 @@ int	init_threads(t_data *data, pthread_t *checker)
 	int	i;
 
 	i = -1;
+	if (pthread_mutex_init(&data->run_mutex, NULL) != 0)
+		return (perror("create mutex error"), 1);
+	if (pthread_mutex_init(&data->print_mutex, NULL) != 0)
+		return (perror("create mutex error"), 1);
 	while (++i < data->number_of_philosophers)
 	{
 		if (pthread_mutex_init(&data->fork[i], NULL) != 0)
@@ -84,14 +85,11 @@ int	init_threads(t_data *data, pthread_t *checker)
 		if (pthread_mutex_init(&data->diner_mutex[i], NULL) != 0)
 			return (perror("create mutex error"), 1);
 		if (pthread_create(&data->philo[i].thread, NULL,
-				&routine, &data->philo[i]) != 0)
+				(t_funct) & routine, &data->philo[i]) != 0)
 			return (perror("create thread error"), 1);
+		usleep(10);
 	}
-	if (pthread_create(checker, NULL, &death_checker, data) != 0)
+	if (pthread_create(checker, NULL, (t_funct) & death_checker, data) != 0)
 		return (perror("create thread error"), 1);
-	if (pthread_mutex_init(&data->run_mutex, NULL) != 0)
-		return (perror("create mutex error"), 1);
-	if (pthread_mutex_init(&data->print_mutex, NULL) != 0)
-		return (perror("create mutex error"), 1);
 	return (0);
 }

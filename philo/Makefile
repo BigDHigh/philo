@@ -7,14 +7,16 @@ SRC := 	utils.c \
 		clean.c \
 		setter.c \
 		getter.c \
+		print.c \
+		input.c \
 		dead.c
 
 
 OBJ := $(SRC:.c=.o)
 
-#CCFLAGS := -Wall -Wextra -Werror
+CCFLAGS := -Wall -Wextra -Werror
 #CCFLAGS := -g -fsanitize=address
-CCFLAGS := -g -fsanitize=thread
+#CCFLAGS := -g -fsanitize=thread
 
 .PHONY: all bonus clean fclean re
 
