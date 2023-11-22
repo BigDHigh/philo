@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:20:16 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 18:37:08 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 20:21:57 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int	init_struct(t_data *data, int argc, char **argv)
 		(sizeof(pthread_mutex_t) * data->number_of_philosophers);
 	data->eaten_mutex = malloc
 		(sizeof(pthread_mutex_t) * data->number_of_philosophers);
-	if (!data->fork || !data->philo || !data->fork_val)
+	if (!data->fork || !data->philo || !data->fork_val || !data->diner_mutex
+		|| !data->eaten_mutex)
 		return (clean_data(data), perror("malloc error"), 1);
 	if (init_philos(data))
 		return (clean_data(data), 1);

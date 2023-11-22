@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:12:22 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 20:05:52 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 20:07:57 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	*death_checker(t_data *data)
 	dead = 0;
 	while (!dead)
 	{
-		usleep(10000);
+		usleep(8000);
 		i = -1;
 		while (++i < data->number_of_philosophers)
 		{

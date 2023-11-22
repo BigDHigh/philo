@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:31:28 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 18:42:09 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 20:13:55 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void					set_fork(t_philo *philo);
 unsigned long long		get_last_diner(t_philo *philo);
 int						get_eat(t_philo *philo);
 int						check_input(int argc, char **argv);
+int						ft_isdigit(int c);
 
 #endif
