@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:35:37 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/21 16:04:25 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 09:35:52 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,12 @@ void	*routine(void *void_philo)
 int	main(int argc, char **argv)
 {
 	t_data		data;
-	int			*ptr_result;
 	pthread_t	checker;
 
 	if (argc < 5 || argc > 6)
 		return (printf("Error: wrong number of arguments\n"), 1);
-	// printf("timestamp: %llu\n", get_time(&data));
-	// sleep_until(get_time(&data) + 1000, &data);
 	if (init_struct(&data, argc, argv))
 		return (printf("Initialization error\n"), 1);
-	// printf("timestamp: %llu\n", get_time(&data));
 	if (init_threads(&data, &checker))
 		return (clean_data(&data), 1);
 	if (clean(&data, &checker))

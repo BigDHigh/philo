@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:12:22 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/21 19:46:52 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 09:34:55 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ int	get_eaten_meals(t_data *data)
 	{
 		if (get_eat(&data->philo[i]) >= data->max_eat)
 			ate_enough++;
-		// printf("%i has eaten %i times\n\n\n", i, data->philo[i].eaten);
 	}
 	if (ate_enough == data->number_of_philosophers)
 	{
-		// printf("All philosophers have eaten %i times\n\n\n", data->max_eat);
 		return (1);
 	}
 	return (0);
@@ -41,32 +39,23 @@ int	get_eaten_meals(t_data *data)
 void	*death_checker(void *void_data)
 {
 	int		i;
-	int		dead;
 	t_data	*data;
 
-	dead = 0;
 	data = (t_data *)void_data;
-	while (!dead)
+	while (1)
 	{
 		usleep(10000);
 		i = -1;
 		while (++i < data->number_of_philosophers)
 		{
-			// if ((get_time(data) - data->philo[i].last_diner >= data->time_to_die) || get_eaten_meals(data))
-			if (get_time(data) - get_last_diner(&data->philo[i]) >= data->time_to_die)
+			if (get_time(data) - get_last_diner
+				(&data->philo[i]) >= (unsigned long long)data->time_to_die)
 			{
-				
 				protected_print("died", &data->philo[i]);
-				// printf("%llu %i died because: %llu - %llu >= %d\n", get_time(data), i, get_time(data), data->philo[i].last_diner, data->time_to_die);
-				dead = 1;
 				break ;
 			}
 			if (get_eaten_meals(data))
-			{
-				printf("you ate enough\n");
-				dead = 1;
 				break ;
-			}
 		}
 	}
 	set_run(data);

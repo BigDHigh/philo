@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:21:29 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 09:17:21 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 09:36:14 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	sleep_until(unsigned long long timestamp, t_data *data)
 	int	i;
 
 	i = 0;
-	// printf("%llu sleeping until %llu\n", get_time(data), timestamp);
 	while (get_time(data) < timestamp)
 		usleep(100);
 }
