@@ -9,6 +9,7 @@ SRC := 	utils.c \
 		getter.c \
 		print.c \
 		input.c \
+		one_philo.c \
 		dead.c
 
 

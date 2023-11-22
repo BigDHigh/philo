@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:35:37 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 19:42:48 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 20:45:52 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	main(int argc, char **argv)
 
 	if (check_input(argc, argv))
 		return (1);
+	if (one_philo(argv))
+		return (0);
 	if (init_struct(&data, argc, argv))
 		return (printf("Initialization error\n"), 1);
 	if (init_threads(&data, &checker))
