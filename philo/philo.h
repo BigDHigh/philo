@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:31:28 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 20:13:55 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 20:26:13 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int						init_struct(t_data *data, int argc, char **argv);
 unsigned long long		get_time(void);
 unsigned long long		get_time_stamp(t_data *data);
 int						ft_atoi(const char *str);
-// void					*death_checker(void *data);
 void					*death_checker(t_data *data);
 void					sleep_until(unsigned long long timestamp);
 void					*routine(t_philo *philo);
