@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:35:37 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 18:43:38 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/22 19:42:48 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ void	*routine(t_philo *philo)
 	pcount = data->number_of_philosophers;
 	while (get_run(data))
 	{
-		// protected_print("thread started", philo);
 		set_fork(philo);
 		protected_print("is sleeping", philo);
 		sleep_until(get_time() + data->time_to_sleep);
 		protected_print("is thinking", philo);
 	}
-	printf("%llu %i thread ending\n", get_time(), index);
 	return (NULL);
 }
 

@@ -22,12 +22,6 @@ CCFLAGS := -Wall -Wextra -Werror
 
 all:$(NAME)
 
-#bonus:$(BNS_OBJ) $(OBJ)
-#	ar rc $(NAME) $(BNS_OBJ) $(OBJ)
-
-#$(BNS_OBJ):
-#	cc -c $(BNS_SRC) $(CCFLAGS)
-
 $(NAME): $(OBJ)
 	cc $(CCFLAGS) $(OBJ) -o $(NAME)
 $(OBJ): $(SRC)
