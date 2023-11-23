@@ -6,12 +6,13 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 17:23:01 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 18:15:20 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/23 08:23:22 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+// return time since last diner in milliseconds
 unsigned long long	get_last_diner(t_philo *philo)
 {
 	unsigned long long	ret_val;
@@ -22,6 +23,7 @@ unsigned long long	get_last_diner(t_philo *philo)
 	return (ret_val);
 }
 
+// return count of how many times philo has eaten yes in milliseconds
 int	get_eat(t_philo *philo)
 {
 	int	ret_val;

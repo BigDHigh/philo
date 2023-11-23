@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 09:13:30 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 20:21:32 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/23 08:25:40 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ int	clean(t_data *data, pthread_t *checker)
 	}
 	i = -1;
 	while (++i < data->number_of_philosophers)
+	{
 		pthread_mutex_destroy(&data->fork[i]);
+		pthread_mutex_destroy(&data->diner_mutex[i]);
+		pthread_mutex_destroy(&data->eaten_mutex[i]);
+	}
+	pthread_mutex_destroy(&data->print_mutex);
+	pthread_mutex_destroy(&data->run_mutex);
 	clean_data(data);
 	return (0);
 }

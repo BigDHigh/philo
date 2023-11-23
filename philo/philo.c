@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:35:37 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 20:45:52 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/23 08:21:00 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 void	*routine(t_philo *philo)
 {
-	int		index;
-	int		pcount;
 	t_data	*data;
 
 	data = philo->data;
-	index = philo->index;
-	pcount = data->number_of_philosophers;
 	while (get_run(data))
 	{
 		set_fork(philo);

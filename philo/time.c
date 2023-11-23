@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:21:29 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 18:43:05 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/23 08:21:33 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,8 @@ unsigned long long	get_time_stamp(t_data *data)
 }
 
 // sleep until timestamp
-// void	sleep_until(unsigned long long timestamp, t_data *data)
 void	sleep_until(unsigned long long timestamp)
 {
-	int	i;
-
-	i = 0;
 	while (get_time() < timestamp)
 		usleep(100);
 }

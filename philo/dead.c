@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:12:22 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 20:07:57 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/23 08:21:45 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int	get_eaten_meals(t_data *data)
 {
 	int	i;
-	int	ate_enough;
 
 	i = 0;
-	ate_enough = 0;
 	if (data->max_eat == 0)
 		return (0);
 	while (i < data->number_of_philosophers)
@@ -34,7 +32,6 @@ int	get_eaten_meals(t_data *data)
 
 // checking if any philosopher has died
 // or if all philosophers have eaten max_eat times
-// void	*death_checker(void *void_data)
 void	*death_checker(t_data *data)
 {
 	int	i;
