@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:20:16 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/11/22 20:21:57 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:47:20 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	init_philos(t_data *data)
 		data->philo[i].index = i;
 		data->philo[i].data = data;
 		data->philo[i].eaten = 0;
-		data->philo[i].last_diner = 0;
+		data->philo[i].last_diner = get_time();
 	}
 	return (0);
 }
